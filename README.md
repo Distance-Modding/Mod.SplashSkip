@@ -1,16 +1,16 @@
-# Distance mod template
+# Distance Splash Skip
 
-Use this repository as a base to create your own Distance mods.
+Distance mod to skip splash screen and startup delays, and boot right into the main menu without needing to press any key. *"Boot up the game White-Lighting-fast!"*
 
-# Using the template
-On github, click the `Use this template` button to create a new repository based on this one
+## Current Options
 
-Once the repository is created, be sure to clone it locally **with submodules**:
-```sh
-git clone --recurse-submodules -j8 <your project .git url>
-```
+* Skip REFRACT splash animation.
+* Skip startup checks for newly-subscribed/unsubscribed Steam Workshop levels.
+    * Note that checks can still be performed from *Main Menu **&gt;** Workshop*.
+* Skip the *press any key* Idle menu and immediately boot into the main menu.
+    * Note that it's still possible to view the Idle menu by pressing back.
 
-# Setting up the project
-After cloning the repository on your local drive, run the [setup.ps1](setup.ps1) script using [PowerShell 7 or higher](https://github.com/PowerShell/PowerShell#get-powershell).
 
-This script will rename the files correctly and replace their content to match your mod name.
+## Known Bugs
+
+* The "LOADING" text will glitch out a little on startup, like is often seen when exiting the level editor in vanilla.
