@@ -1,12 +1,10 @@
 ﻿using HarmonyLib;
-using System;
-using UnityEngine;
 
-namespace Distance.SplashSkip.Harmony
+namespace Distance.SplashSkip.Patches
 {
 	/// <summary>
-	/// Patch to perform <see cref="ConfigurationLogic.SkipIdleMenu"/> functionality,
-	/// and half of the <see cref="ConfigurationLogic.SkipSplashAnimation"/> functionality.
+	/// Patch to perform <see cref="Mod.SkipIdleMenu"/> functionality,
+	/// and half of the <see cref="Mod.SkipSplashAnimation"/> functionality.
 	/// <para/>
 	/// This ends splash animation fading ASAP, and changes the variable that determines which menu to boot into.
 	/// </summary>
@@ -25,7 +23,7 @@ namespace Distance.SplashSkip.Harmony
 			}
 
 			// Boot into Main Menu instead of Idle Menu.
-			bool skipIdle = Mod.Instance.Config.SkipIdleMenu;
+			bool skipIdle = Mod.SkipIdleMenu.Value;
 			if (skipIdle && G.Sys.GameManager_.openOnMainMenuInit_ == GameManager.OpenOnMainMenuInit.FancyIdleMenu)
 			{
 				G.Sys.GameManager_.openOnMainMenuInit_ = GameManager.OpenOnMainMenuInit.None;
@@ -33,7 +31,7 @@ namespace Distance.SplashSkip.Harmony
 
 
 			// Immediately end the splash screen animation fading.
-			if (Mod.Instance.Config.SkipSplashAnimation)
+			if (Mod.SkipSplashAnimation.Value)
 			{
 				// Setting these fields will cause this next Update loop to finish immediately.
 				// We use `splashScreens_.Length - 1` for `currentIndex_` because that value will

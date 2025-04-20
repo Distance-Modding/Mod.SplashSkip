@@ -8,14 +8,4 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Distance.SplashSkip.Content</Import_RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Mod\mod.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Mod\" />
-  </ItemGroup>
 </Project>
-
-

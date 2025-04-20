@@ -1,12 +1,10 @@
 ﻿using Events.SteamWorkshop;
 using HarmonyLib;
-using System;
-using UnityEngine;
 
-namespace Distance.SplashSkip.Harmony
+namespace Distance.SplashSkip.Patches
 {
 	/// <summary>
-	/// Patch to perform half of the <see cref="ConfigurationLogic.SkipSplashAnimation"/> functionality.
+	/// Patch to perform half of the <see cref="Mod.SkipSplashAnimation"/> functionality.
 	/// <para/>
 	/// This stops the splash animations from being created.
 	/// </summary>
@@ -19,7 +17,7 @@ namespace Distance.SplashSkip.Harmony
 			__instance.fadeTimer_ = 0f;
 			
 			// Skipping this block will skip the REFRACT splash animation (and any other splash animations that could be defined).
-			if (!Mod.Instance.Config.SkipSplashAnimation)
+			if (!Mod.SkipSplashAnimation.Value)
 			{
 				PlayCrossplatformMovie component = __instance.foregroundPanel_.GetComponent<PlayCrossplatformMovie>();
 				component.Play();

@@ -2,13 +2,11 @@
 using Events.GameLogic;
 using HarmonyLib;
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Distance.SplashSkip.Harmony
+namespace Distance.SplashSkip.Patches
 {
 	/// <summary>
-	/// Patch to perform <see cref="ConfigurationLogic.SkipWorkshopSubscriptions"/> functionality.
+	/// Patch to perform <see cref="Mod.SkipWorkshopSubscriptions"/> functionality.
 	/// <para/>
 	/// This bypasses the branch for adding/removing new subscriptions, and goes straight to final setup.
 	/// Final setup involves grabbing Workshop information such as author usernames, ratings, etc.
@@ -29,7 +27,7 @@ namespace Distance.SplashSkip.Harmony
 			StaticEvent<Skip.Data>.Subscribe(new StaticEvent<Skip.Data>.Delegate(__instance.OnEventSkip));
 			
 			// Call the later branch in order to skip adding/removing newly-subscribed/unsubscribed workshop levels.
-			bool skipChecks = Mod.Instance.Config.SkipWorkshopSubscriptions;
+			bool skipChecks = Mod.SkipWorkshopSubscriptions.Value;
 			if (!skipChecks && SteamworksUGC.IsOnline_ && ApplicationEx.LoadedLevelName_ == "SplashScreens")
 			{
 				__instance.DoNextFrame(delegate
